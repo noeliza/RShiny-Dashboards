@@ -1,3 +1,13 @@
+
+# package version ---------------------------------------------------------
+
+#  viridis_0.6.2        viridisLite_0.4.0    sf_1.0-7             shinydashboard_0.7.2 stringr_1.4.0        shinyWidgets_0.6.4  
+#  kableExtra_1.3.4     plotly_4.10.0        ggplot2_3.3.5        dplyr_1.0.8          shiny_1.7.1      
+
+
+
+# libraries ---------------------------------------------------------------
+
 #encoding UTF-8
 
 library(shiny)
@@ -35,17 +45,6 @@ data <- read.csv(paste0(dirname(rstudioapi::getSourceEditorContext()$path),
                                                           ifelse(brgy == 'Sto Nino', 'Santo Niño',
                                                                  ifelse(brgy == 'St Peter', 'Saint Peter',
                                                                         ifelse(brgy == 'Greater Lagro', 'Fairview', brgy))))))))))
-
-
-
-
-#count of modus
-
-
-data %>% select(modus, date) %>% distinct() %>%
-  group_by(modus) %>% summarise(days = n()) %>%
-  left_join(modus, by = 'modus') %>%
-  kbl() %>% kable_minimal()
 
 
 qc1 <- st_read(paste0(dirname(rstudioapi::getSourceEditorContext()$path),
